@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add a click event listener
     resumeButton.addEventListener('click', () => {
         // Open the resume PDF link in a new tab for preview
-        window.open('./assets/SuvrodipChakrobortyResume.pdf', '_blank');
+        window.open('https://github.com/IamSuvrodip/Suvrodip-Chakroborty/blob/main/assets/SuvrodipChakrobortyResume.pdf', '_blank');
     });
 });
 
