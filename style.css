@@ -1362,6 +1362,12 @@ nav {
     border-radius: 20px;
 }
 
+.project_info a{
+    font-size: 2rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
 .project_info h2 {
     font-size: 2rem;
     font-weight: 500;
@@ -1390,11 +1396,11 @@ nav {
 }
 
 
-/* .project_info .view_project {
-    margin-top: 10px;
+.project_info .view_project {
+    margin-bottom: 0px;
     background: transparent;
     color: white;
-    padding: 5px;
+    padding: 3px;
     border: 1px solid var(--white-color);
     border-radius: 50px;
     cursor: pointer;
@@ -1404,7 +1410,7 @@ nav {
 .project_info .view_project:hover {
     color: var(--third-color);
     border: 1px solid var(--white-color);
-} */
+}
 
 
 
