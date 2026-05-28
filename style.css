@@ -1959,11 +1959,205 @@ nav {
 
 
 
+/* =========================================
+   Cinematic Premium Intro Styles (Updated)
+   ========================================= */
+#cinematic-intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;      /* Right e 0 kore stretch kora hoche */
+    bottom: 0;     /* Bottom e 0 kore stretch kora hoche */
+    width: 100%;
+    height: 100%;
+    background-color: #050505;
+    z-index: 99999;
+    overflow: hidden;
+    transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+}
 
+/* Background Video (Bulletproof Fullscreen) */
+#intro-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%); /* Ekdom center e place korbe */
+    object-fit: contain;
+    pointer-events: none;
+}
+@media (min-width: 1024px) {
+    #intro-video {
+        object-fit: cover;
+    }
+}
 
+.glass-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(4, 15, 30, 0.3) 50%);
+    z-index: 1;
+}
 
+/* --- Mute Button Styles --- */
+#play-pause-btn {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Ekdom screen er majhkhan e */
+    z-index: 10;
+    background: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    animation: pulseGlow 2s infinite ease-in-out;
+}
 
+#play-pause-btn:hover {
+    transform: translate(-50%, -50%) scale(1.1); 
+}
 
+.playbutton{
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.intro-name{
+    position: absolute;
+    top: 28%;
+    left: 54%;
+    transform: translate(-50%, -50%); /* Ekdom screen er majhkhan e */
+    z-index: 10;
+    background: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 400px;
+    transition: all 0.1s ease;
+}
+
+/* --- Content Container (Right Corner) --- */
+.intro-content {
+    position: absolute;
+    bottom: 12%; /* Nicher dik theke ektu upore */
+    right: 5%;   /* Dan diker corner a */
+    z-index: 2;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Sob kichu right a align korbe */
+    gap: 10px;
+    color: #ffffff;
+}
+@media (min-width: 1024px) {
+    #intro-video {
+        object-fit: cover;
+    }
+}
+
+.name-text1,
+.name-text2 {
+    font-size: 5rem;
+    font-weight: 800;
+    margin: 0;
+
+    opacity: 0;
+    transform: scale(0.9);
+    letter-spacing: 5px;
+
+    /* ❌ remove old gradient fill */
+    background: none;
+    -webkit-text-fill-color: transparent;
+
+    /* ✅ stroke text */
+    -webkit-text-stroke: 1.5px white;
+
+    /* subtle glow */
+    text-shadow: 0 0 10px rgba(77, 184, 255, 0.3);
+
+    /* animation same */
+    animation: scaleGlow 1.2s ease 1s forwards;
+
+    
+}
+.typing-wrapper { font-size: 1.8rem; font-weight: bold; opacity: 0; animation: fadeIn 1s ease 2.2s forwards; }
+.static-text { color: #a0aab5; }
+#typed-text { color: #f2910a; text-shadow: 0 0 10px rgba(77, 184, 255, 0.5); }
+.cursor { display: inline-block; width: 3px; background-color: #f2910a; margin-left: 5px; animation: blink 0.8s infinite; }
+
+@media (min-width: 1024px) {
+    .intro-name {
+        left: 52%;
+        gap: 400px;
+    }
+    .name-text1 { font-size: 4rem;}
+    .name-text2 { font-size: 4rem;}
+    #play-pause-btn {
+        top: 62%;
+    }
+}
+
+@media (max-width: 1024px) {
+    #play-pause-btn {
+        top: 60%;
+    }
+
+    .intro-name,
+    .name-text1,
+    .name-text2 {
+        display: none;
+    }
+}
+
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes scaleGlow { to { opacity: 1; transform: scale(1); text-shadow: 0 0 25px rgba(77, 184, 255, 0.6); } }
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.fade-out-intro { opacity: 0 !important; visibility: hidden !important; }
+
+/* =========================================
+   Main Website Bottom to Top Animation 
+   ========================================= */
+.website-slide-up {
+    animation: slideUpWebsite 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes slideUpWebsite {
+    0% { opacity: 0; visibility: visible; transform: translateY(100px); }
+    100% { opacity: 1; visibility: visible; transform: translateY(0); }
+}
+
+/* Responsive adjustments for phones & tablets */
+@media (max-width: 768px) {
+    #mute-btn { top: 20px; right: 20px; font-size: 0.9rem; padding: 8px 15px; }
+    .intro-content { bottom: 8%; right: 5%; }
+    .name-text { font-size: 2.2rem; }
+    .greeting { font-size: 1.2rem; }
+    .typing-wrapper { font-size: 1.2rem; }
+    .final-tagline { font-size: 0.9rem; }
+}
 
 
 
