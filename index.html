@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/webp" href="/images/webicon.webp">
+    <link rel="icon" type="image/ico" href="/images/icon.ico">
     <title>Suvrodip Chakroborty</title>
 
     <link rel="stylesheet" href="style.css">
@@ -23,6 +23,30 @@
 </head>
 
 <body>
+    <div id="cinematic-intro">
+        <video id="intro-video" muted playsinline preload="auto" poster="intro-bg-placeholder.png">
+            <source src="./images/video/video.mp4#t=0.1" type="video/mp4">
+        </video>
+        
+        <div class="glass-overlay"></div>
+        
+        <button id="play-pause-btn">
+                <img class="playbutton" src="./images/play.png" alt="">
+        </button>
+
+        <div class="intro-name">
+            <h1 class="name-text1">Suvrodip</h1>
+            <h1 class="name-text2">Chakroborty</h1>
+        </div>
+        
+        <div class="intro-content">
+            <div class="typing-wrapper">
+                <span class="static-text">I'm a </span>
+                <span id="typed-text"></span><span class="cursor">|</span>
+            </div>
+        </div>
+    </div>
+
     <!-- nav -->
     <nav id="home">
 
