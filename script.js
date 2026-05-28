@@ -237,15 +237,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // resume show
+// resume show
 document.addEventListener("DOMContentLoaded", () => {
-    // Get the button element
-    const resumeButton = document.querySelector('button');
-
+    // Get the specific CV button inside the .content div
+    const resumeButton = document.querySelector('.content button');
+    
     // Add a click event listener
-    resumeButton.addEventListener('click', () => {
-        // Open the resume PDF link in a new tab for preview
-        window.open('./assets/Suvrodip-Chakroborty-CV.pdf', '_blank');
-    });
+    if(resumeButton) {
+        resumeButton.addEventListener('click', () => {
+            // Open the resume PDF link in a new tab for preview
+            window.open('./assets/Suvrodip-Chakroborty-CV.pdf', '_blank');
+        });
+    }
 });
 
 
@@ -393,13 +396,87 @@ var mixer = mixitup('.projects_cards');
 
 
 
+// =========================================
+// 1. Cinematic Intro & Play/Pause Logic
+// =========================================
+document.addEventListener("DOMContentLoaded", () => {
+    const introOverlay = document.getElementById("cinematic-intro");
+    const introVideo = document.getElementById("intro-video");
+    const playPauseBtn = document.getElementById("play-pause-btn"); 
+    const typedTextSpan = document.getElementById("typed-text");
+    const cursorSpan = document.querySelector(".cursor");
+    const finalTagline = document.querySelector(".final-tagline");
+    const mainPortfolio = document.getElementById("main-portfolio"); // Main website wrapper
 
+    // Intro chola obdi website er original scroll bondho
+    if(introOverlay) {
+        document.body.style.overflow = "hidden";
+    }
 
+    // --- Play / Pause & Unmute Logic ---
+    if(playPauseBtn && introVideo) {
+        playPauseBtn.addEventListener("click", () => {
+            if (introVideo.paused) {
+                introVideo.muted = false; // Video play korar sathe unmute korbe
+                introVideo.play();
+                playPauseBtn.innerHTML = '<span id="play-icon">';
+            } else {
+                introVideo.pause();
+                playPauseBtn.innerHTML = '<span id="play-icon">';
+            }
+        });
+    }
 
+    // --- Typing Effect Logic ---
+    const textArray = ["Full Stack Developer", "Web Developer", "Software Developer", "Freelancer"];
+    const typingDelay = 100;
+    const erasingDelay = 50;
+    const newTextDelay = 1500;
+    let textArrayIndex = 0;
+    let charIndex = 0;
 
+    function type() {
+        if (charIndex < textArray[textArrayIndex].length) {
+            if(typedTextSpan) typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingDelay);
+        } else {
+            setTimeout(erase, newTextDelay);
+        }
+    }
 
+    function erase() {
+        if (charIndex > 0) {
+            if(typedTextSpan) typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+            charIndex--;
+            setTimeout(erase, erasingDelay);
+        } else {
+            textArrayIndex++;
+            if(textArrayIndex >= textArray.length) textArrayIndex = 0;
+            setTimeout(type, typingDelay + 200);
+        }
+    }
 
+    if(textArray.length) setTimeout(type, 2600);
+    setTimeout(() => { if(finalTagline) finalTagline.classList.add("show"); }, 4500);
 
+    // --- Video End & Website Slide Up Logic ---
+    if(introOverlay && introVideo) {
+        introVideo.addEventListener("ended", () => {
+            introOverlay.classList.add("fade-out-intro");
+            
+            if(mainPortfolio) {
+                mainPortfolio.style.visibility = "visible"; 
+                mainPortfolio.classList.add("website-slide-up");
+            }
+            
+            setTimeout(() => {
+                document.body.style.overflow = "auto";
+                introOverlay.style.display = "none";
+            }, 1200); 
+        });
+    }
+});
 
 
 
@@ -456,14 +533,19 @@ var mixer = mixitup('.projects_cards');
 
 
 
-// document.addEventListener("contextmenu", function (event) {
-//     event.preventDefault();
-// });
 
-// // Disable F12 and Ctrl+Shift+I (DevTools shortcuts)
-// document.addEventListener("keydown", function (event) {
-//     if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
-//         event.preventDefault();
-//     }
-// });
+
+
+
+
+document.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
+});
+
+// Disable F12 and Ctrl+Shift+I (DevTools shortcuts)
+document.addEventListener("keydown", function (event) {
+    if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+        event.preventDefault();
+    }
+});
 
